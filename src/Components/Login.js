@@ -88,7 +88,7 @@ export const Login = () => {
                                 <h2>Login Form</h2>
                                 <input type="email" id='userId' name='userId' value={logInData.userId} placeholder='Email' onChange={handleOnclickLogin} />
                                 <input type="password" id='userPassword' name='userPassword' value={logInData.userPassword} placeholder='Password' onChange={handleOnclickLogin} />
-                                <button className="forgot-password" onClick={() => setIsResetPassword(true)}>Reset Password?</button>
+                                <button className="forgot-password" onClick={() => setIsResetPassword(true)}>Forget Password?</button>
                                 <button onClick={handleLogin}>Login</button>
                             </div>
                         </>
