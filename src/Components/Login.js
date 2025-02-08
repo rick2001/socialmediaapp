@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import './Login.css'
 import { resetUserPassword, signUpUser } from '../redux/counter/counterSlice';
+import './Login.css'
+import { toast } from 'react-toastify';
 export const Login = () => {
     const userDetails = useSelector(state => state.counter.userDetails)
     const dispatch = useDispatch();
@@ -10,7 +11,7 @@ export const Login = () => {
     const [isLogin, setIsLogin] = useState(true);
     const [isResetPassword, setIsResetPassword] = useState(false);
     const [logInData, setLoginData] = useState({ userId: "", userPassword: "" })
-    const [signUpData, setSignUpData] = useState({ userId: "", userPassword: "" })
+    const [signUpData, setSignUpData] = useState({ userId: "", userPassword: "", userFirstName: "", userLastName: "", userDateOfBirth: ""})
     const [resetData, setResetData] = useState({ userId: "", newPassword: "" });
 
 
@@ -18,22 +19,48 @@ export const Login = () => {
         setLoginData({ ...logInData, [e.target.id]: e.target.value })
     }
 
-    const handleLogin = () => {
-        console.log(logInData);
-        console.log(userDetails);
+    const handleLogin = async () => {
+        // using json server
+        try {
+            const response = await fetch(`http://localhost:5000/users?userId=${logInData.userId}&userPassword=${logInData.userPassword}`);
+            const data = await response.json();
+            console.log("This is data->", data);
 
-        const index = userDetails.findIndex((ele) => ele.userId === logInData.userId)
-        if (index !== -1) {
-            if (userDetails[index].userPassword === logInData.userPassword) {
+
+            if (data.length > 0) {
+                toast.success("Logged in successfully..",
+                    {autoClose: 1000}
+                )
                 navigate("/home");
             }
             else {
-                alert("Invalid Password!")
+                toast.error("Invalid credentials",{
+                    autoClose:1000
+                })
             }
+        } catch (error) {
+            console.log("Logging error..", error)
+            toast.warning("Error connecting to server",{
+                autoClose: 1000
+            })
         }
-        else {
-            alert("Invalid Credentials! Please Sign Up")
-        }
+
+        // using redux
+        // console.log(logInData);
+        // console.log(userDetails);
+
+        // const index = userDetails.findIndex((ele) => ele.userId === logInData.userId)
+        // if (index !== -1) {
+        //     if (userDetails[index].userPassword === logInData.userPassword) {
+        //         navigate("/home");
+        //     }
+        //     else {
+        //         alert("Invalid Password!")
+        //     }
+        // }
+        // else {
+        //     alert("Invalid Credentials! Please Sign Up")
+        // }
 
     }
 
@@ -41,13 +68,61 @@ export const Login = () => {
         setSignUpData({ ...signUpData, [e.target.id]: e.target.value });
     }
 
-    const handleSignUp = () => {
-        console.log(signUpData);
-        dispatch(signUpUser(signUpData));
-        console.log(userDetails);
-        alert("signed up successfully");
-        setIsLogin(true);
-        console.log(signUpData);
+    const handleSignUp = async () => {
+        // using json server
+
+        try {
+            // checking duplicate mail id
+            const checkResponse = await fetch(`http://localhost:5000/users?userId=${signUpData.userId}`);
+            const existingUser = await checkResponse.json();
+
+            if(existingUser.length > 0){
+                toast.warning("User already exists! Please login")
+                setSignUpData({userId: "", userPassword: "", userFirstName: "", userLastName: "", userDateOfBirth: ""})
+                setIsLogin(true);
+                return;
+            }
+
+            // create a new user
+            const createNewUser = await fetch("http://localhost:5000/users",{
+                method:"POST",
+                headers:{
+                    "Content-Type":"application/json"
+                },
+                body: JSON.stringify(signUpData)
+            })
+
+            if (createNewUser.ok){
+                toast.success("Signed up successfully! Log in now..",{
+                    autoClose:2500
+                })
+                setIsLogin(true);
+                setSignUpData({userId: "", userPassword: "", userFirstName: "", userLastName: "", userDateOfBirth: ""})
+            }
+            else{
+                toast.error("Sign up failed",{
+                    autoClose:1000
+                })
+            }
+           
+
+        } catch (error) {
+            console.log("Sign up error",error);
+            toast.error("Error signing up!",{
+                autoClose:1000
+            })
+            
+        }
+
+        
+
+        // using redux
+        // console.log(signUpData);
+        // dispatch(signUpUser(signUpData));
+        // console.log(userDetails);
+        // alert("signed up successfully");
+        // setIsLogin(true);
+        // console.log(signUpData);
     }
 
 
@@ -64,7 +139,7 @@ export const Login = () => {
             setResetData({ userId: "", newPassword: "" })
             console.log(userDetails);
         }
-        else{
+        else {
             alert("Mail not found in database!")
             setResetData({ userId: "", newPassword: "" })
         }
@@ -96,6 +171,9 @@ export const Login = () => {
                         <>
                             <div className='form'>
                                 <h2>SignUp Form</h2>
+                                <input type="text" id='userFirstName' name='userFirstName' value={signUpData.userFirstName} placeholder='First name' onChange={handleOnClickSignUp} />
+                                <input type="text" id='userLastName' name='userLastName' value={signUpData.userLastName} placeholder='Last name' onChange={handleOnClickSignUp} />
+                                <input type="date" id='userDateOfBirth' name='userDateOfBirth' value={signUpData.userDateOfBirth} placeholder='DOB' onChange={handleOnClickSignUp} />
                                 <input type="email" id='userId' name='userId' value={signUpData.userId} placeholder='Email' onChange={handleOnClickSignUp} />
                                 <input type="password" id='userPassword' name='userPassword' value={signUpData.userPassword} placeholder='Password' onChange={handleOnClickSignUp} />
                                 <button onClick={handleSignUp}>SignUp</button>

@@ -1,0 +1,36 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "userId": "monojitpalit4@gmail.com",
+      "userPassword": "123456",
+      "userFirstName": "Monojit",
+      "userLastName": "Palit",
+      "userDateOfBirth": "1990-01-01"
+    },
+    {
+      "id": 2,
+      "userId": "rickpalit4@example.com",
+      "userPassword": "123456",
+      "userFirstName": "Rick",
+      "userLastName": "Palit",
+      "userDateOfBirth": "1990-01-01"
+    },
+    {
+      "id": 1,
+      "userId": "kuppi4@gmail.com",
+      "userPassword": "123456",
+      "userFirstName": "kuppi",
+      "userLastName": "dutta",
+      "userDateOfBirth": "1990-01-01"
+    },
+    {
+      "id": "626c",
+      "userId": "mithu4@gmail.com",
+      "userPassword": "123456",
+      "userFirstName": "Mithu",
+      "userLastName": "palit",
+      "userDateOfBirth": "2025-02-06"
+    }
+  ]
+}

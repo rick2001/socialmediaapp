@@ -5,11 +5,17 @@ const initialState = {
   userDetails:[
     {
         userId: "monojitpalit4@gmail.com",
-        userPassword: "12345"
+        userPassword: "12345",
+        userFirstName: "Monojit",
+        userLastName: "Palit",
+        userDateOfBirth:"2002-02-14"
     },
     {
-        userId: "koly4@gmail.com",
-        userPassword: "12345"
+        userId: "rick4@gmail.com",
+        userPassword: "12345",
+        userFirstName: "Rick",
+        userLastName: "Palit",
+        userDateOfBirth:"2003-02-14"
     }
   ]
 }
