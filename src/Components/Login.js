@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { resetUserPassword, signUpUser } from '../redux/counter/counterSlice';
+// import { useSelector, useDispatch } from 'react-redux';
+// import { resetUserPassword, signUpUser } from '../redux/counter/counterSlice';
 import './Login.css'
 import { toast } from 'react-toastify';
 export const Login = () => {
-    const userDetails = useSelector(state => state.counter.userDetails)
-    const dispatch = useDispatch();
+    // const userDetails = useSelector(state => state.counter.userDetails)
+    // const dispatch = useDispatch();
     const navigate = useNavigate();
     const [isLogin, setIsLogin] = useState(true);
     const [isResetPassword, setIsResetPassword] = useState(false);
@@ -130,19 +130,81 @@ export const Login = () => {
         setResetData({ ...resetData, [e.target.id]: e.target.value })
     }
 
-    const handleResetPassword = () => {
-        console.log(resetData);
-        const index = userDetails.findIndex((ele) => ele.userId === resetData.userId);
-        if (index !== -1) {
-            dispatch(resetUserPassword(resetData));
-            alert("Password changed successfully")
-            setResetData({ userId: "", newPassword: "" })
-            console.log(userDetails);
+
+    // auto populating
+    const handleForgetPassword = ()=>{
+        if(!logInData.userId){
+            toast.warning("Please enter email first!")
+            return;
         }
-        else {
-            alert("Mail not found in database!")
-            setResetData({ userId: "", newPassword: "" })
+        setResetData({userId: logInData.userId, newPassword: ""})
+        setIsResetPassword(true);
+    }
+
+
+    // resetting the password
+    const handleResetPassword = async () => {
+        // using json server
+        try {
+            if (!resetData.userId || !resetData.newPassword) {
+                toast.warning("Please enter value in all the fields!")
+                return;
+            }
+            console.log(resetData);
+
+            const resetUserResponse = await fetch(`http://localhost:5000/users?userId=${resetData.userId}`)
+            const data = await resetUserResponse.json();
+
+            if(data.length === 0){
+                toast.error("Email not found!",{autoClose:1000})
+                return;
+            }
+
+            console.log(data);
+
+            const user = data[0];
+            
+            const updateResponse = await fetch(`http://localhost:5000/users/${user.id}`,{
+                method:"PATCH",
+                headers: {
+                    "Content-Type":"application/json"
+                },
+                body:JSON.stringify({userPassword:resetData.newPassword})
+            })
+
+            if(updateResponse.ok){
+                toast.success("Password changed successfully! Please Login",{autoClose:1000})
+                setResetData({userId:"",newPassword:""});
+                setIsResetPassword(false);
+            }
+            else{
+                toast.error("Failed to reset password!",{autoClose:1000})
+            }
+
+            
+        } catch (error) {
+            console.log("Reset error:",error);
+            toast.error("Error resetting password",{autoClose:1000})
         }
+        
+
+
+
+
+
+        // using redux
+        // console.log(resetData);
+        // const index = userDetails.findIndex((ele) => ele.userId === resetData.userId);
+        // if (index !== -1) {
+        //     dispatch(resetUserPassword(resetData));
+        //     alert("Password changed successfully")
+        //     setResetData({ userId: "", newPassword: "" })
+        //     console.log(userDetails);
+        // }
+        // else {
+        //     alert("Mail not found in database!")
+        //     setResetData({ userId: "", newPassword: "" })
+        // }
 
 
     }
@@ -163,7 +225,7 @@ export const Login = () => {
                                 <h2>Login Form</h2>
                                 <input type="email" id='userId' name='userId' value={logInData.userId} placeholder='Email' onChange={handleOnclickLogin} />
                                 <input type="password" id='userPassword' name='userPassword' value={logInData.userPassword} placeholder='Password' onChange={handleOnclickLogin} />
-                                <button className="forgot-password" onClick={() => setIsResetPassword(true)}>Forget Password?</button>
+                                <button className="forgot-password" onClick={handleForgetPassword}>Forget Password?</button>
                                 <button onClick={handleLogin}>Login</button>
                             </div>
                         </>
