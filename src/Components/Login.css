@@ -1,133 +1,121 @@
-  body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    background-color: #f7f7f7;
-  }
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f7f7f7;
+}
 
-  .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100%;
-  }
+.login-container .form-container {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  text-align: center;
+}
 
-  .form-container {
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 300px;
-    text-align: center;
-  }
+.login-container .form-toggle {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
 
-  .form-toggle {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-  }
+.login-container .form-toggle button {
+  width: 50%;
+  padding: 10px;
+  background-color: #f3f3f3;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 10px 10px 0 0;
+  transition: background-color 0.3s ease;
+}
 
-  .form-toggle button {
-    width: 50%;
-    padding: 10px;
-    background-color: #f3f3f3;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: 10px 10px 0 0;
-    transition: background-color 0.3s ease;
-  }
+.login-container .form-toggle .active {
+  background-color: #033452;
+  color: white;
+}
 
-  .form-toggle .active {
-    background-color: #033452;
-    color: white;
-  }
+.login-container .form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-  .form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+.login-container .form h2 {
+  margin-bottom: 20px;
+  font-size: 20px;
+  color: #033452;
+}
 
-  .form h2 {
-    margin-bottom: 20px;
-    font-size: 20px;
-    color: #033452;
-  }
+.login-container .form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+}
 
-  .form input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 14px;
-  }
+.login-container .form button {
+  width: 100%;
+  padding: 10px;
+  background-color: #033452;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
 
-  .form button {
-    width: 100%;
-    padding: 10px;
-    background-color: #033452;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-  }
+.login-container .form button:hover {
+  background-color: #021f33;
+}
 
-  .form button:hover {
-    background-color: #021f33;
-  }
+/* Forgot Password */
+.login-container .forgot-password {
+  background: none;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+  text-align: left;
+  font-size: 14px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  transition: color 0.3s ease;
+}
 
-  /* Reset Password Button */
-  .forgot-password {
-    background: none;
-    border: none;
-    color: #007bff;
-    cursor: pointer;
-    text-align: left;
-    font-size: 14px;
-    margin-top: 5px;
-    margin-bottom: 15px;
-    /* Add space between Reset Password and Login button */
-    transition: color 0.3s ease;
-  }
+.login-container .forgot-password:hover {
+  color: #0056b3;
+}
 
-  .forgot-password:hover {
-    color: #0056b3;
-  }
+/* Reset Password */
+.login-container .reset-password-container {
+  text-align: center;
+  width: 100%;
+}
 
-  /* Reset Password Form */
-  .reset-password-container {
-    text-align: center;
-    width: 100%;
-  }
+.login-container .reset-password-container input {
+  width: 100%;
+}
 
-  .reset-password-container input {
-    width: 100%;
-  }
+.login-container .reset-password-container button {
+  margin-top: 10px;
+}
 
-  .reset-password-container button {
-    margin-top: 10px;
-  }
+/* Back to Login */
+.login-container .back-button {
+  background: none;
+  color: #033452;
+  text-decoration: underline;
+  font-size: 14px;
+  cursor: pointer;
+  margin-top: 10px;
+  border: none;
+}
 
-  /* Back to Login Button */
-  .back-button {
-    background: none;
-    color: #033452;
-    text-decoration: underline;
-    font-size: 14px;
-    cursor: pointer;
-    margin-top: 10px;
-    border: none;
-  }
-
-  .back-button:hover {
-    color: #021f33;
-  }
-
+.login-container .back-button:hover {
+  color: #021f33;
+}

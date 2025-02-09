@@ -175,7 +175,6 @@ export const Login = () => {
             if(updateResponse.ok){
                 toast.success("Password changed successfully! Please Login",{autoClose:1000})
                 setResetData({userId:"",newPassword:""});
-                setIsResetPassword(false);
             }
             else{
                 toast.error("Failed to reset password!",{autoClose:1000})
@@ -212,7 +211,7 @@ export const Login = () => {
 
 
     return (
-        <div className='container'>
+        <div className='login-container'>
             <div className="form-container">
                 <div className="form-toggle">
                     <button className={isLogin ? "active" : ""} onClick={() => { setIsLogin(true); setIsResetPassword(false); }}>Login</button>

@@ -12,7 +12,7 @@
     box-sizing: border-box;
 }
 
-/* Left Section */
+
 .topbarLeft {
     flex: 1;
 }
@@ -24,7 +24,7 @@
     cursor: pointer;
 }
 
-/* Center Section (Search Bar) */
+
 .topbarCenter {
     flex: 2;
     display: flex;
@@ -55,7 +55,7 @@
     outline: none;
 }
 
-/* Right Section (Links, Icons, Logout) */
+
 .topbarRight {
     flex: 3;
     display: flex;
@@ -100,7 +100,7 @@
     font-size: 12px;
 }
 
-/* Profile Image */
+
 .topbarImg {
     width: 32px;
     height: 32px;
@@ -109,7 +109,7 @@
     cursor: pointer;
 }
 
-/* Logout Button */
+
 .logoutButton {
     background-color: red !important;
     color: white !important;

@@ -6,6 +6,7 @@ import ChatIcon from '@mui/icons-material/Chat';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+
 export const Navbar = () => {
   const navigate = useNavigate();
 
@@ -14,12 +15,12 @@ export const Navbar = () => {
   }
   return (
     <div className='topbarContainer'>
-      {/* Left Section */}
+      
       <div className="topbarLeft">
         <span className="logo">SocialMedia</span>
       </div>
 
-      {/* Center Section (Search Bar) */}
+      
       <div className="topbarCenter">
         <div className="searchbar">
           <SearchIcon className="searchIcon" />
@@ -27,7 +28,7 @@ export const Navbar = () => {
         </div>
       </div>
 
-      {/* Right Section (Icons + Logout) */}
+      
       <div className="topbarRight">
         <div className="topbarLinks">
           <span className="topbarLink">Homepage</span>
@@ -51,10 +52,8 @@ export const Navbar = () => {
           </div>
         </div>
 
-        {/* Profile Image */}
-        <img src="/assets/person/1.jpeg" alt="Profile" className="topbarImg" />
 
-        {/* Logout Button */}
+        <img src="/assets/person/1.jpeg" alt="Profile" className="topbarImg" />
         <Button variant="contained" color="secondary" className="logoutButton" onClick={handleLogOut}>
           Logout
         </Button>
