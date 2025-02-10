@@ -232,11 +232,16 @@ export const Login = () => {
                         <>
                             <div className='form'>
                                 <h2>SignUp Form</h2>
-                                <input type="text" id='userFirstName' name='userFirstName' value={signUpData.userFirstName} placeholder='First name' onChange={handleOnClickSignUp} />
-                                <input type="text" id='userLastName' name='userLastName' value={signUpData.userLastName} placeholder='Last name' onChange={handleOnClickSignUp} />
-                                <input type="date" id='userDateOfBirth' name='userDateOfBirth' value={signUpData.userDateOfBirth} placeholder='DOB' onChange={handleOnClickSignUp} />
-                                <input type="email" id='userId' name='userId' value={signUpData.userId} placeholder='Email' onChange={handleOnClickSignUp} />
-                                <input type="password" id='userPassword' name='userPassword' value={signUpData.userPassword} placeholder='Password' onChange={handleOnClickSignUp} />
+                                <label className='inputText'>First Name:</label>
+                                <input type="text" id='userFirstName' name='userFirstName' value={signUpData.userFirstName} placeholder='Enter your first name' onChange={handleOnClickSignUp} />
+                                <label className='inputText'>Last Name:</label>
+                                <input type="text" id='userLastName' name='userLastName' value={signUpData.userLastName} placeholder='Enter your last name' onChange={handleOnClickSignUp} />
+                                <label className='inputText'>DOB:</label>
+                                <input type="date" id='userDateOfBirth' name='userDateOfBirth' value={signUpData.userDateOfBirth} placeholder='DOB (yyyy/mm/dd)' onChange={handleOnClickSignUp} />
+                                <label className='inputText'>Email:</label>
+                                <input type="email" id='userId' name='userId' value={signUpData.userId} placeholder='Enter your email id' onChange={handleOnClickSignUp} />
+                                <label className='inputText'>Password:</label>
+                                <input type="password" id='userPassword' name='userPassword' value={signUpData.userPassword} placeholder='Enter your password' onChange={handleOnClickSignUp} />
                                 <button onClick={handleSignUp}>SignUp</button>
                             </div>
                         </>

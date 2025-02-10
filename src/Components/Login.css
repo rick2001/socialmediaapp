@@ -74,7 +74,28 @@
   background-color: #021f33;
 }
 
-/* Forgot Password */
+
+.login-container .form .inputText {
+  align-self: flex-start;
+  font-size: 14px;
+  font-weight: bold;
+  color: #033452;
+  margin-bottom: 5px;
+}
+
+.login-container .form input[type="date"] {
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+}
+
+.login-container .form input:focus {
+  border-color: #033452;
+  outline: none;
+  box-shadow: 0 0 5px rgba(3, 52, 82, 0.5);
+}
+
+
+
 .login-container .forgot-password {
   background: none;
   border: none;
@@ -91,7 +112,6 @@
   color: #0056b3;
 }
 
-/* Reset Password */
 .login-container .reset-password-container {
   text-align: center;
   width: 100%;
@@ -105,7 +125,7 @@
   margin-top: 10px;
 }
 
-/* Back to Login */
+
 .login-container .back-button {
   background: none;
   color: #033452;
@@ -119,3 +139,4 @@
 .login-container .back-button:hover {
   color: #021f33;
 }
+
