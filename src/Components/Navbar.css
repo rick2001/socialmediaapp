@@ -1,29 +1,28 @@
 .topbarContainer {
     height: 50px;
     width: 100%;
-    background-color: #1877f2;
+    background-color: #263238; 
     display: flex;
     align-items: center;
     justify-content: space-between;
     position: sticky;
     top: 0;
     z-index: 999;
-    padding: 0 20px;
+    padding: 0 15px;
     box-sizing: border-box;
+    border-bottom: 2px solid #455a64; 
 }
-
 
 .topbarLeft {
     flex: 1;
 }
 
 .logo {
-    font-size: 24px;
+    font-size: 22px;
     font-weight: bold;
-    color: white;
+    color: #eceff1; 
     cursor: pointer;
 }
-
 
 .topbarCenter {
     flex: 2;
@@ -32,74 +31,88 @@
 }
 
 .searchbar {
-    width: 80%;
-    height: 30px;
-    background-color: white;
-    border-radius: 30px;
+    width: 60%;
+    height: 34px;
+    background-color: #ffffff;
+    border-radius: 8px;
     display: flex;
     align-items: center;
     padding: 5px 10px;
+    border: 1px solid #455a64;
 }
 
 .searchIcon {
-    font-size: 20px !important;
+    font-size: 18px !important;
+    color: #546e7a;
 }
 
 .searchInput {
     border: none;
     width: 100%;
     padding-left: 10px;
+    font-size: 14px;
+    background: transparent;
+    color: #263238;
 }
 
 .searchInput:focus {
     outline: none;
 }
 
-
 .topbarRight {
     flex: 3;
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    color: white;
-    gap: 20px;
+    color: #eceff1;
+    gap: 15px;
 }
 
 .topbarLinks {
     display: flex;
-    gap: 15px;
+    gap: 12px;
 }
 
 .topbarLink {
     font-size: 14px;
     cursor: pointer;
+    transition: color 0.2s ease-in-out;
+}
+
+.topbarLink:hover {
+    color: #b0bec5;
 }
 
 .topbarIcons {
     display: flex;
-    gap: 15px;
+    gap: 14px;
 }
 
 .topbarIconItem {
     position: relative;
     cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.topbarIconItem:hover {
+    transform: scale(1.1);
 }
 
 .topbarIconBadge {
-    width: 15px;
-    height: 15px;
-    background-color: red;
+    width: 14px;
+    height: 14px;
+    background: red;
     border-radius: 50%;
     color: white;
     position: absolute;
-    top: -5px;
-    right: -5px;
+    top: -3px;
+    right: -3px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 12px;
+    font-size: 10px;
+    font-weight: bold;
 }
-
 
 .topbarImg {
     width: 32px;
@@ -107,13 +120,19 @@
     border-radius: 50%;
     object-fit: cover;
     cursor: pointer;
+    border: 2px solid #546e7a;
 }
 
-
 .logoutButton {
-    background-color: red !important;
+    background-color: #c62828 !important;
     color: white !important;
     font-size: 12px !important;
-    padding: 5px 10px !important;
+    padding: 6px 12px !important;
     text-transform: none !important;
+    border-radius: 6px !important;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.logoutButton:hover {
+    background-color: #b71c1c !important;
 }
