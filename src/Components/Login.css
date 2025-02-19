@@ -22,6 +22,7 @@
 }
 
 .login-container .form-toggle button {
+  
   width: 50%;
   padding: 10px;
   background-color: #f3f3f3;
@@ -59,6 +60,7 @@
 }
 
 .login-container .form button {
+  margin-top: 4px;
   width: 100%;
   padding: 10px;
   background-color: #033452;
@@ -139,4 +141,42 @@
 .login-container .back-button:hover {
   color: #021f33;
 }
+
+
+.password-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.password-container input {
+  flex: 1;
+  padding-right: 30px;
+}
+
+.info-icon {
+  margin-left: 5px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.info-icon:hover::after {
+  content: attr(title);
+  position: absolute;
+  background: #333;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 12px;
+  top: -25px;
+  left: 20px;
+  white-space: nowrap;
+}
+.error-message {
+  color: red;
+  font-size: 12px;
+}
+
+
+
 

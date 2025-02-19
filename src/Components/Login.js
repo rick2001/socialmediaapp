@@ -13,7 +13,7 @@ export const Login = () => {
     const [logInData, setLoginData] = useState({ userId: "", userPassword: "" })
     const [signUpData, setSignUpData] = useState({ userId: "", userPassword: "", userFirstName: "", userLastName: "", userDateOfBirth: ""})
     const [resetData, setResetData] = useState({ userId: "", newPassword: "" });
-
+    const [passwordError, setPasswordError] = useState("")
 
     const handleOnclickLogin = (e) => {
         setLoginData({ ...logInData, [e.target.id]: e.target.value })
@@ -64,9 +64,6 @@ export const Login = () => {
 
     }
 
-    const handleOnClickSignUp = (e) => {
-        setSignUpData({ ...signUpData, [e.target.id]: e.target.value });
-    }
 
     const handleSignUp = async () => {
         // using json server
@@ -209,6 +206,28 @@ export const Login = () => {
     }
 
 
+    const validatePassword = (password)=>{
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}$/;
+        return passwordRegex.test(password);
+    }
+
+
+    const handleOnClickSignUp = (e) => {
+        const {id, value} = e.target;
+        setSignUpData({ ...signUpData, [id]: value });
+
+        if(id==="userPassword"){
+           if(!validatePassword(value)){
+                setPasswordError("Password must be at least 8 characters long and include an uppercase letter, a lowercase letter, a number, and a special character.")
+                e.target.style.border = "2px solid red"
+            }
+            else{
+                setPasswordError("");
+                e.target.style.border = "1px solid green"
+            }
+        }
+    }
+
 
     return (
         <div className='login-container'>
@@ -237,12 +256,15 @@ export const Login = () => {
                                 <label className='inputText'>Last Name:</label>
                                 <input type="text" id='userLastName' name='userLastName' value={signUpData.userLastName} placeholder='Enter your last name' onChange={handleOnClickSignUp} />
                                 <label className='inputText'>DOB:</label>
-                                <input type="date" id='userDateOfBirth' name='userDateOfBirth' value={signUpData.userDateOfBirth} placeholder='DOB (yyyy/mm/dd)' onChange={handleOnClickSignUp} />
+                                <input type="date" id='userDateOfBirth' name='userDateOfBirth' value={signUpData.userDateOfBirth} max={new Date().toISOString().split("T")[0]} onChange={handleOnClickSignUp} />
                                 <label className='inputText'>Email:</label>
                                 <input type="email" id='userId' name='userId' value={signUpData.userId} placeholder='Enter your email id' onChange={handleOnClickSignUp} />
                                 <label className='inputText'>Password:</label>
                                 <input type="password" id='userPassword' name='userPassword' value={signUpData.userPassword} placeholder='Enter your password' onChange={handleOnClickSignUp} />
-                                <button onClick={handleSignUp}>SignUp</button>
+                                <i className="info-icon" title="Must be 8+ characters, include uppercase, lowercase, number & special character">ℹ️</i>
+                                {/* <p className="password-hint">Must be 8+ characters, include uppercase, lowercase, number & special character.</p> */}
+                                {passwordError && <p className="error-message">{passwordError}</p>}
+                                <button disabled onClick={handleSignUp}>SignUp</button>
                             </div>
                         </>
                     )

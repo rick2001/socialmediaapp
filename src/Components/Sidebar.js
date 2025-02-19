@@ -1,7 +1,11 @@
 import React from 'react'
 import './Sidebar.css';
 import {RssFeed, Chat, PlayCircleFilledOutlined, Group, Bookmark, HelpOutline, WorkOutline, Event, School} from "@mui/icons-material"
+// import { Users } from '../dummyData';
+import { FavFriend } from './FavFriend';
+import { useSelector } from 'react-redux';
 export const Sidebar = () => {
+    const Users = useSelector(state=>state.counter.Users);
   return (
     <div className='sidebar'>
         <div className="sidebarWrapper">
@@ -57,55 +61,11 @@ export const Sidebar = () => {
             <hr className='sidebarFriendList'/>
             <ul className="sidebarFriendList">
 
-                <li className="sidebarFriend">
-                    <img className='sidebarFriendImg' src="/assets/person/2.jpeg" alt="sidebarImage" />
-                    <span className="sidebarFriendName">Monojit palit</span>
-                </li>
+               {Users.map((user)=>(
+                <FavFriend key={user.id} user={user}/>
+               ))}
 
-                <li className="sidebarFriend">
-                    <img className='sidebarFriendImg' src="/assets/person/2.jpeg" alt="sidebarImage" />
-                    <span className="sidebarFriendName">Monojit palit</span>
-                </li>
-
-                <li className="sidebarFriend">
-                    <img className='sidebarFriendImg' src="/assets/person/2.jpeg" alt="sidebarImage" />
-                    <span className="sidebarFriendName">Monojit palit</span>
-                </li>
-
-                <li className="sidebarFriend">
-                    <img className='sidebarFriendImg' src="/assets/person/2.jpeg" alt="sidebarImage" />
-                    <span className="sidebarFriendName">Monojit palit</span>
-                </li>
-
-                <li className="sidebarFriend">
-                    <img className='sidebarFriendImg' src="/assets/person/2.jpeg" alt="sidebarImage" />
-                    <span className="sidebarFriendName">Monojit palit</span>
-                </li>
-
-                <li className="sidebarFriend">
-                    <img className='sidebarFriendImg' src="/assets/person/2.jpeg" alt="sidebarImage" />
-                    <span className="sidebarFriendName">Monojit palit</span>
-                </li>
-
-                <li className="sidebarFriend">
-                    <img className='sidebarFriendImg' src="/assets/person/2.jpeg" alt="sidebarImage" />
-                    <span className="sidebarFriendName">Monojit palit</span>
-                </li>
-
-                <li className="sidebarFriend">
-                    <img className='sidebarFriendImg' src="/assets/person/2.jpeg" alt="sidebarImage" />
-                    <span className="sidebarFriendName">Monojit palit</span>
-                </li>
-
-                <li className="sidebarFriend">
-                    <img className='sidebarFriendImg' src="/assets/person/2.jpeg" alt="sidebarImage" />
-                    <span className="sidebarFriendName">Monojit palit</span>
-                </li>
-
-                <li className="sidebarFriend">
-                    <img className='sidebarFriendImg' src="/assets/person/2.jpeg" alt="sidebarImage" />
-                    <span className="sidebarFriendName">Monojit palit</span>
-                </li>
+                
             </ul>
         </div>
     </div>

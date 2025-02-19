@@ -6,8 +6,10 @@ import ChatIcon from '@mui/icons-material/Chat';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-export const Navbar = () => {
+export const Navbar = ({onProfileClick, profilePic}) => {
+
   const navigate = useNavigate();
 
   const handleLogOut = ()=>{
@@ -17,7 +19,7 @@ export const Navbar = () => {
     <div className='topbarContainer'>
       
       <div className="topbarLeft">
-        <span className="logo">SocialMedia</span>
+        <Link to="/home"><span className="logo">SocialMedia</span></Link>
       </div>
 
       
@@ -31,7 +33,7 @@ export const Navbar = () => {
       
       <div className="topbarRight">
         <div className="topbarLinks">
-          <span className="topbarLink">Homepage</span>
+         <Link to="/home"><span className="topbarLink">Homepage</span></Link> 
           <span className="topbarLink">Timeline</span>
         </div>
 
@@ -53,7 +55,7 @@ export const Navbar = () => {
         </div>
 
 
-        <img src="/assets/person/1.jpeg" alt="Profile" className="topbarImg" />
+        <img onClick={onProfileClick} src={profilePic} alt="Profile" className="topbarImg" />
         <Button variant="contained" color="secondary" className="logoutButton" onClick={handleLogOut}>
           Logout
         </Button>
