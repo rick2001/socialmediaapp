@@ -31,6 +31,14 @@
       "userFirstName": "Mithu",
       "userLastName": "palit",
       "userDateOfBirth": "2025-02-06"
+    },
+    {
+      "id": "6",
+      "userId": "abc@gmail.com",
+      "userPassword": "1234567",
+      "userFirstName": "Monojit",
+      "userLastName": "Palit",
+      "userDateOfBirth": "1990-01-01"
     }
   ]
 }

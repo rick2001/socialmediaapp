@@ -264,7 +264,7 @@ export const Login = () => {
                                 <i className="info-icon" title="Must be 8+ characters, include uppercase, lowercase, number & special character">ℹ️</i>
                                 {/* <p className="password-hint">Must be 8+ characters, include uppercase, lowercase, number & special character.</p> */}
                                 {passwordError && <p className="error-message">{passwordError}</p>}
-                                <button disabled onClick={handleSignUp}>SignUp</button>
+                                <button onClick={handleSignUp}>SignUp</button>
                             </div>
                         </>
                     )
