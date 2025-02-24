@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 // import { resetUserPassword, signUpUser } from '../redux/counter/counterSlice';
 import './Login.css'
 import { toast } from 'react-toastify';
+import { Eye, EyeOff } from "lucide-react"
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 export const Login = () => {
     // const userDetails = useSelector(state => state.counter.userDetails)
     // const dispatch = useDispatch();
@@ -11,9 +13,12 @@ export const Login = () => {
     const [isLogin, setIsLogin] = useState(true);
     const [isResetPassword, setIsResetPassword] = useState(false);
     const [logInData, setLoginData] = useState({ userId: "", userPassword: "" })
-    const [signUpData, setSignUpData] = useState({ userId: "", userPassword: "", userFirstName: "", userLastName: "", userDateOfBirth: ""})
+    const [signUpData, setSignUpData] = useState({ userId: "", userPassword: "", userFirstName: "", userLastName: "", userDateOfBirth: "" })
     const [resetData, setResetData] = useState({ userId: "", newPassword: "" });
-    const [passwordError, setPasswordError] = useState("")
+    const [passwordError, setPasswordError] = useState("");
+    const [showPassword, setShowPassword] = useState(false);
+    const [showSignUpPassword, setShowSignUpPassword] = useState(false);
+    const [showResetPassword, setShowResetPassword] = useState(false);
 
     const handleOnclickLogin = (e) => {
         setLoginData({ ...logInData, [e.target.id]: e.target.value })
@@ -29,18 +34,18 @@ export const Login = () => {
 
             if (data.length > 0) {
                 toast.success("Logged in successfully..",
-                    {autoClose: 1000}
+                    { autoClose: 1000 }
                 )
                 navigate("/home");
             }
             else {
-                toast.error("Invalid credentials",{
-                    autoClose:1000
+                toast.error("Invalid credentials", {
+                    autoClose: 1000
                 })
             }
         } catch (error) {
             console.log("Logging error..", error)
-            toast.warning("Error connecting to server",{
+            toast.warning("Error connecting to server", {
                 autoClose: 1000
             })
         }
@@ -73,45 +78,45 @@ export const Login = () => {
             const checkResponse = await fetch(`http://localhost:5000/users?userId=${signUpData.userId}`);
             const existingUser = await checkResponse.json();
 
-            if(existingUser.length > 0){
+            if (existingUser.length > 0) {
                 toast.warning("User already exists! Please login")
-                setSignUpData({userId: "", userPassword: "", userFirstName: "", userLastName: "", userDateOfBirth: ""})
+                setSignUpData({ userId: "", userPassword: "", userFirstName: "", userLastName: "", userDateOfBirth: "" })
                 setIsLogin(true);
                 return;
             }
 
             // create a new user
-            const createNewUser = await fetch("http://localhost:5000/users",{
-                method:"POST",
-                headers:{
-                    "Content-Type":"application/json"
+            const createNewUser = await fetch("http://localhost:5000/users", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
                 },
                 body: JSON.stringify(signUpData)
             })
 
-            if (createNewUser.ok){
-                toast.success("Signed up successfully! Log in now..",{
-                    autoClose:2500
+            if (createNewUser.ok) {
+                toast.success("Signed up successfully! Log in now..", {
+                    autoClose: 2500
                 })
                 setIsLogin(true);
-                setSignUpData({userId: "", userPassword: "", userFirstName: "", userLastName: "", userDateOfBirth: ""})
+                setSignUpData({ userId: "", userPassword: "", userFirstName: "", userLastName: "", userDateOfBirth: "" })
             }
-            else{
-                toast.error("Sign up failed",{
-                    autoClose:1000
+            else {
+                toast.error("Sign up failed", {
+                    autoClose: 1000
                 })
             }
-           
+
 
         } catch (error) {
-            console.log("Sign up error",error);
-            toast.error("Error signing up!",{
-                autoClose:1000
+            console.log("Sign up error", error);
+            toast.error("Error signing up!", {
+                autoClose: 1000
             })
-            
+
         }
 
-        
+
 
         // using redux
         // console.log(signUpData);
@@ -129,12 +134,12 @@ export const Login = () => {
 
 
     // auto populating
-    const handleForgetPassword = ()=>{
-        if(!logInData.userId){
+    const handleForgetPassword = () => {
+        if (!logInData.userId) {
             toast.warning("Please enter email first!")
             return;
         }
-        setResetData({userId: logInData.userId, newPassword: ""})
+        setResetData({ userId: logInData.userId, newPassword: "" })
         setIsResetPassword(true);
     }
 
@@ -152,37 +157,37 @@ export const Login = () => {
             const resetUserResponse = await fetch(`http://localhost:5000/users?userId=${resetData.userId}`)
             const data = await resetUserResponse.json();
 
-            if(data.length === 0){
-                toast.error("Email not found!",{autoClose:1000})
+            if (data.length === 0) {
+                toast.error("Email not found!", { autoClose: 1000 })
                 return;
             }
 
             console.log(data);
 
             const user = data[0];
-            
-            const updateResponse = await fetch(`http://localhost:5000/users/${user.id}`,{
-                method:"PATCH",
+
+            const updateResponse = await fetch(`http://localhost:5000/users/${user.id}`, {
+                method: "PATCH",
                 headers: {
-                    "Content-Type":"application/json"
+                    "Content-Type": "application/json"
                 },
-                body:JSON.stringify({userPassword:resetData.newPassword})
+                body: JSON.stringify({ userPassword: resetData.newPassword })
             })
 
-            if(updateResponse.ok){
-                toast.success("Password changed successfully! Please Login",{autoClose:1000})
-                setResetData({userId:"",newPassword:""});
+            if (updateResponse.ok) {
+                toast.success("Password changed successfully! Please Login", { autoClose: 1000 })
+                setResetData({ userId: "", newPassword: "" });
             }
-            else{
-                toast.error("Failed to reset password!",{autoClose:1000})
+            else {
+                toast.error("Failed to reset password!", { autoClose: 1000 })
             }
 
-            
+
         } catch (error) {
-            console.log("Reset error:",error);
-            toast.error("Error resetting password",{autoClose:1000})
+            console.log("Reset error:", error);
+            toast.error("Error resetting password", { autoClose: 1000 })
         }
-        
+
 
 
 
@@ -206,22 +211,22 @@ export const Login = () => {
     }
 
 
-    const validatePassword = (password)=>{
+    const validatePassword = (password) => {
         const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}$/;
         return passwordRegex.test(password);
     }
 
 
     const handleOnClickSignUp = (e) => {
-        const {id, value} = e.target;
+        const { id, value } = e.target;
         setSignUpData({ ...signUpData, [id]: value });
 
-        if(id==="userPassword"){
-           if(!validatePassword(value)){
+        if (id === "userPassword") {
+            if (!validatePassword(value)) {
                 setPasswordError("Password must be at least 8 characters long and include an uppercase letter, a lowercase letter, a number, and a special character.")
                 e.target.style.border = "2px solid red"
             }
-            else{
+            else {
                 setPasswordError("");
                 e.target.style.border = "1px solid green"
             }
@@ -242,10 +247,16 @@ export const Login = () => {
                             <div className='form'>
                                 <h2>Login Form</h2>
                                 <input type="email" id='userId' name='userId' value={logInData.userId} placeholder='Email' onChange={handleOnclickLogin} />
-                                <input type="password" id='userPassword' name='userPassword' value={logInData.userPassword} placeholder='Password' onChange={handleOnclickLogin} />
+                                <div className='password-container'>
+                                    <input type={showPassword ? "text" : "password"} id='userPassword' name='userPassword' value={logInData.userPassword} placeholder='Password' onChange={handleOnclickLogin} />
+                                    <span className="eye-icon" onClick={() => setShowPassword(!showPassword)}>
+                                        {showPassword ? <FaEyeSlash size={20} /> : <FaEye size={20} />}
+                                    </span>
+                                </div>
                                 <button className="forgot-password" onClick={handleForgetPassword}>Forget Password?</button>
                                 <button onClick={handleLogin}>Login</button>
                             </div>
+
                         </>
                     ) : (
                         <>
@@ -260,7 +271,13 @@ export const Login = () => {
                                 <label className='inputText'>Email:</label>
                                 <input type="email" id='userId' name='userId' value={signUpData.userId} placeholder='Enter your email id' onChange={handleOnClickSignUp} />
                                 <label className='inputText'>Password:</label>
-                                <input type="password" id='userPassword' name='userPassword' value={signUpData.userPassword} placeholder='Enter your password' onChange={handleOnClickSignUp} />
+                                <div className='password-container'>
+                                    <input type={showSignUpPassword ? "text" : "password"} id='userPassword' name='userPassword' value={signUpData.userPassword} placeholder='Enter your password' onChange={handleOnClickSignUp} />
+                                    <span className='eye-icon' onClick={() => setShowSignUpPassword(!showSignUpPassword)}>
+                                        {showSignUpPassword ? <FaEyeSlash /> : <FaEye />}
+                                    </span>
+                                </div>
+
                                 <i className="info-icon" title="Must be 8+ characters, include uppercase, lowercase, number & special character">ℹ️</i>
                                 {/* <p className="password-hint">Must be 8+ characters, include uppercase, lowercase, number & special character.</p> */}
                                 {passwordError && <p className="error-message">{passwordError}</p>}
@@ -273,7 +290,12 @@ export const Login = () => {
                         <div className='form reset-password-container'>
                             <h2>Reset Password</h2>
                             <input type="email" id='userId' name='userId' value={resetData.userId} placeholder='Enter your Email' onChange={handleOnClickReset} />
-                            <input type="password" id='newPassword' name='newPassword' value={resetData.newPassword} placeholder='Enter New Password' onChange={handleOnClickReset} />
+                            <div className='password-container'>
+                                <input type={showResetPassword ? "text" : "password"} id='newPassword' name='newPassword' value={resetData.newPassword} placeholder='Enter New Password' onChange={handleOnClickReset} />
+                                <span className='eye-icon' onClick={() => setShowResetPassword(!showResetPassword)}>
+                                    {showResetPassword ? <FaEyeSlash /> : <FaEye />}
+                                </span>
+                            </div>
                             <button onClick={handleResetPassword}>Confirm Reset</button>
                             <button className="back-button" onClick={() => setIsResetPassword(false)}>Back to Login</button>
                         </div>

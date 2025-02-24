@@ -6,14 +6,16 @@
   background-color: #f7f7f7;
 }
 
+
 .login-container .form-container {
   background-color: white;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 300px;
+  width: 320px;
   text-align: center;
 }
+
 
 .login-container .form-toggle {
   display: flex;
@@ -22,7 +24,6 @@
 }
 
 .login-container .form-toggle button {
-  
   width: 50%;
   padding: 10px;
   background-color: #f3f3f3;
@@ -38,6 +39,7 @@
   color: white;
 }
 
+
 .login-container .form {
   display: flex;
   flex-direction: column;
@@ -50,19 +52,69 @@
   color: #033452;
 }
 
+
 .login-container .form input {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   margin-bottom: 10px;
   border: 1px solid #ddd;
   border-radius: 5px;
   font-size: 14px;
+  height: 42px;
+  box-sizing: border-box;
 }
+
+.login-container .form input:focus {
+  border-color: #033452;
+  outline: none;
+  box-shadow: 0 0 5px rgba(3, 52, 82, 0.5);
+}
+
+
+.password-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  position: relative;
+}
+
+.password-container input {
+  flex: 1;
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+  height: 42px;
+  box-sizing: border-box;
+}
+
+
+.password-container .eye-icon {
+  position: absolute;
+  right: 12px;
+  cursor: pointer;
+  font-size: 18px;
+  color: #555;
+}
+
+.password-container .eye-icon:hover {
+  color: #000;
+}
+
+
+.login-container .form input[type="date"] {
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  padding: 10px;
+  height: 42px;
+}
+
 
 .login-container .form button {
   margin-top: 4px;
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   background-color: #033452;
   color: white;
   border: none;
@@ -75,27 +127,6 @@
 .login-container .form button:hover {
   background-color: #021f33;
 }
-
-
-.login-container .form .inputText {
-  align-self: flex-start;
-  font-size: 14px;
-  font-weight: bold;
-  color: #033452;
-  margin-bottom: 5px;
-}
-
-.login-container .form input[type="date"] {
-  background-color: #f9f9f9;
-  border: 1px solid #ccc;
-}
-
-.login-container .form input:focus {
-  border-color: #033452;
-  outline: none;
-  box-shadow: 0 0 5px rgba(3, 52, 82, 0.5);
-}
-
 
 
 .login-container .forgot-password {
@@ -114,19 +145,6 @@
   color: #0056b3;
 }
 
-.login-container .reset-password-container {
-  text-align: center;
-  width: 100%;
-}
-
-.login-container .reset-password-container input {
-  width: 100%;
-}
-
-.login-container .reset-password-container button {
-  margin-top: 10px;
-}
-
 
 .login-container .back-button {
   background: none;
@@ -143,16 +161,11 @@
 }
 
 
-.password-container {
-  display: flex;
-  align-items: center;
-  position: relative;
+.error-message {
+  color: red;
+  font-size: 12px;
 }
 
-.password-container input {
-  flex: 1;
-  padding-right: 30px;
-}
 
 .info-icon {
   margin-left: 5px;
@@ -172,11 +185,3 @@
   left: 20px;
   white-space: nowrap;
 }
-.error-message {
-  color: red;
-  font-size: 12px;
-}
-
-
-
-
