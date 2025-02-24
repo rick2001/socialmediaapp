@@ -1,19 +1,19 @@
 import React from 'react';
 import './Profile.css';
 
-export const Profile = ({profilePic, setProfilePic}) => {
+export const Profile = ({ profilePic, setProfilePic }) => {
     const handleFileChange = (event) => {
         const file = event.target.files[0];
         if (file) {
-          const reader = new FileReader();
-          reader.readAsDataURL(file); 
-          reader.onloadend = () => {
-            const base64String = reader.result;
-            setProfilePic(base64String); 
-            localStorage.setItem('profilePic', base64String); // Saving in local storage
-          };
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onloadend = () => {
+                const base64String = reader.result;
+                setProfilePic(base64String);
+                localStorage.setItem('profilePic', base64String); // Saving in local storage
+            };
         }
-      };
+    };
 
     return (
         <div className="profile">
@@ -29,7 +29,10 @@ export const Profile = ({profilePic, setProfilePic}) => {
                         <span className='profileInfoDesc'>Hello my friends!</span>
                     </div>
 
-                    <input type='file' accept='image/*' onChange={handleFileChange}/>
+                    {/* <input type='file' accept='image/*' onChange={handleFileChange}/> */}
+                    <input type="file" id="fileInput" accept="image/*" onChange={handleFileChange} />
+                    <label htmlFor="fileInput" className="fileUploadLabel">Change Profile Pic</label>
+
                 </div>
                 <div className="profileRightBottom">
                     <h4 className='rightbarTitle'>User Information</h4>
