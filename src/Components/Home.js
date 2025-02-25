@@ -13,7 +13,7 @@ export const Home = () => {
       <Navbar onProfileClick={()=>setShowProfile(!showProfile)} profilePic={profilePic}/>
       <div className="homeContainer">
         <Sidebar />
-        <Feed/>
+        <Feed profilePic={profilePic}/>
         {showProfile ? <Profile profilePic={profilePic} setProfilePic={setProfilePic}/>:<Rightbar/>}
         {/* <Rightbar/> */}
 

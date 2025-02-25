@@ -1,12 +1,15 @@
 import React from 'react'
 import "./Share.css"
 import {PermMedia, Label, Room, EmojiEmotions} from "@mui/icons-material"
-export const Share = () => {
+
+
+
+export const Share = ({profilePic}) => {
   return (
     <div className='share'>
       <div className="shareWrapper">
         <div className="shareTop">
-          <img className='shareProfileImg' src="/assets/person/1.jpeg" alt="" />
+          <img className='shareProfileImg' src={profilePic} alt="Profile pic" />
           <input placeholder="What's in your mind?" className='shareInput' type="text" />
         </div>
         <hr className='shareHr'/>
@@ -17,6 +20,7 @@ export const Share = () => {
               <PermMedia htmlColor='tomato' className='shareIcon'/>
               <span className='shareOptionText'>Photo or Video</span>
             </div>
+
 
             <div className="shareOption">
               <Label htmlColor='blue' className='shareIcon'/>

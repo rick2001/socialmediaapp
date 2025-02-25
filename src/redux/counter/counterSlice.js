@@ -167,11 +167,16 @@ export const counterSlice = createSlice({
       if (index !== -1) {
         state.userDetails[index].userPassword = newPassword;
       }
+    },
+
+    addPost: (state, action)=>{
+      state.Posts.unshift(action.payload);
     }
+
+
   },
 })
 
-// Action creators are generated for each case reducer function
-export const { signUpUser, resetUserPassword } = counterSlice.actions
+export const { signUpUser, resetUserPassword, addPost } = counterSlice.actions
 
 export default counterSlice.reducer

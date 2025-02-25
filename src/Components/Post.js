@@ -24,7 +24,7 @@ export const Post = ({ post }) => {
                 </div>
                 <div className="postCenter">
                     <span className="postText">{post?.desc}</span>
-                    <img className='postImg' src={post.photo} alt="" />
+                    <img className='postImg' src={post.photo} alt="Post media" />
                 </div>
                 <div className="postBottom">
                     <div className="postBottomLeft">

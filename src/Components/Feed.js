@@ -4,14 +4,16 @@ import './Feed.css'
 import { Share } from './Share'
 import { Post } from './Post'
 import { useSelector } from 'react-redux'
-export const Feed = () => {
+
+
+export const Feed = ({profilePic}) => {
   const Posts = useSelector(state=>state.counter.Posts);
   console.log("This is feed.js",Posts);
   
   return (
     <div className='feed'>
       <div className="feedWrapper">
-        <Share />
+        <Share profilePic={profilePic}/>
         {Posts.map((post) => (
           <Post key={post.id} post={post}/>
         ))}
