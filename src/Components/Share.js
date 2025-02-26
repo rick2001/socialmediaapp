@@ -25,7 +25,7 @@ export const Share = ({ profilePic }) => {
 
   // Function to handle posting content
   const handlePost = () => {
-    if (!file && !caption.trim()) return; // Prevent posting empty content
+    if (!file && !caption.trim()) return; // Preventing posting empty content
 
     const newPost = {
       id: Math.random(),
@@ -38,7 +38,7 @@ export const Share = ({ profilePic }) => {
       new:"yes"
     };
 
-    dispatch(addPost(newPost)); // Dispatch post to Redux store
+    dispatch(addPost(newPost)); // dispatching the data to redux store
     setFile(null);
     setCaption("");
   };
@@ -64,7 +64,7 @@ export const Share = ({ profilePic }) => {
         <div className="shareBottom">
           <div className="shareOptions">
 
-            {/* newly added */}
+            {/* newly addition for the media upload*/}
 
             <label htmlFor="file" className="shareOption">
               <PermMedia htmlColor='tomato' className='shareIcon' />

@@ -79,7 +79,7 @@
     background-color: #165db2;
   }
   
-  /* NEW STYLES ADDED FOR IMAGE/VIDEO PREVIEW */
+  /* image and video preview */
   .shareImgContainer {
     display: flex;
     justify-content: center;
