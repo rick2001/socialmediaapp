@@ -1,7 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  value: 0,
   // userDetails:[
   //   {
   //       userId: "monojitpalit4@gmail.com",
@@ -22,7 +21,7 @@ const initialState = {
     {
       id: 1,
       profilePicture: "assets/person/1.jpeg",
-      username: "Rohan Dutta"
+      username: "Monojit Palit"
     },
     {
       id: 2,
