@@ -1,6 +1,18 @@
 # Login Page
 ![week-4 (sample-1)](https://github.com/user-attachments/assets/61859f1c-3c7a-40e0-b0b8-61e528aad17d)
 
+# SignUp Page
+![week-4 (sample-5)](https://github.com/user-attachments/assets/ef961136-fd07-46c1-a824-dcd0a29fefee)
+
+# Forget Password
+ ![week-4 (sample-2)](https://github.com/user-attachments/assets/4385c6a1-dddd-41bc-9de8-eb4bd237db42)
+
+# Home Page
+![image](https://github.com/user-attachments/assets/ce84cbed-87b8-4e33-9de9-ea17eb7d2ef4)
+
+# Profile Bar
+![image](https://github.com/user-attachments/assets/172a235f-65d3-4ea0-9932-bb8e39c180da)
+
 
 
 # Getting Started with Create React App
