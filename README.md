@@ -13,6 +13,8 @@
 # Profile Bar
 ![image](https://github.com/user-attachments/assets/172a235f-65d3-4ea0-9932-bb8e39c180da)
 
+# Post Functionality
+![image](https://github.com/user-attachments/assets/624d68f8-2cc1-41ae-818f-ae33aadcd2dc)
 
 
 # Getting Started with Create React App
