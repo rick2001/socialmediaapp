@@ -11,7 +11,7 @@ const initialPost = storedPosts ? storedPosts : [
         id: 1,
         desc: "Love For All, Hatred For None.",
         photo: "assets/post/1.jpeg",
-        date: "5 mins ago",
+        date: "02/05/20 2.01 pm",
         userId: 1,
         like: 32,
         comment: 9,
@@ -19,7 +19,7 @@ const initialPost = storedPosts ? storedPosts : [
       {
         id: 2,
         photo: "assets/post/2.jpeg",
-        date: "15 mins ago",
+        date: "02/02/2017 10.30 pm",
         userId: 2,
         like: 2,
         comment: 1,
@@ -28,7 +28,7 @@ const initialPost = storedPosts ? storedPosts : [
         id: 3,
         desc: "Every moment is a fresh beginning.",
         photo: "assets/post/3.jpeg",
-        date: "1 hour ago",
+        date: "06/05/2023 11.30 pm",
         userId: 3,
         like: 61,
         comment: 2,
@@ -36,44 +36,12 @@ const initialPost = storedPosts ? storedPosts : [
       {
         id: 4,
         photo: "assets/post/4.jpeg",
-        date: "4 hours ago",
+        date: "02/03/2021 01.27 pm",
         userId: 4,
         like: 7,
         comment: 3,
-      },
-      {
-        id: 5,
-        photo: "assets/post/5.jpeg",
-        date: "5 hours ago",
-        userId: 5,
-        like: 23,
-        comment: 5,
-      },
-      {
-        id: 6,
-        photo: "assets/post/6.jpeg",
-        date: "1 day ago",
-        userId: 6,
-        like: 44,
-        comment: 6,
-      },
-      {
-        id: 7,
-        desc: "Never regret anything that made you smile.",
-        photo: "assets/post/7.jpeg",
-        date: "2 days ago",
-        userId: 7,
-        like: 52,
-        comment: 3,
-      },
-      {
-        id: 8,
-        photo: "assets/post/8.jpeg",
-        date: "3 days ago",
-        userId: 8,
-        like: 15,
-        comment: 1,
-      },
+      }
+     
 ]
 
 

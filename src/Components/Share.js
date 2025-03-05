@@ -3,6 +3,7 @@ import "./Share.css"
 import { PermMedia, Label, Room, EmojiEmotions } from "@mui/icons-material"
 import { addPost } from '../redux/counter/counterSlice'
 import { useDispatch, useSelector } from "react-redux";
+import { toast } from 'react-toastify';
 
 
 export const Share = ({ profilePic }) => {
@@ -23,6 +24,23 @@ export const Share = ({ profilePic }) => {
   };
 
 
+  const formatDate = () => {
+    const date = new Date();
+    // date
+    const day = String(date.getDate()).padStart(2, "0"); // dd
+    const month = String(date.getMonth() + 1).padStart(2, "0"); // mm
+    const year = String(date.getFullYear()).slice(-2); // yy
+
+
+    // time
+    let hours = date.getHours();
+    const minutes = String(date.getMinutes()).padStart(2, "0");
+    const ampm = hours > 12 ? "pm":"am"
+    hours = hours>12? hours%12 : hours
+    return `${day}/${month}/${year} ${hours}.${minutes} ${ampm}`; // Only date
+  };
+
+
   // Function to handle posting content
   const handlePost = () => {
     if (!file && !caption.trim()) return; // Preventing posting empty content
@@ -31,7 +49,7 @@ export const Share = ({ profilePic }) => {
       id: Math.random(),
       desc: caption,
       photo: file,
-      date: "Just now",
+      date: formatDate(),
       userId: user.id,
       like: 0,
       comment: 0,
@@ -39,6 +57,9 @@ export const Share = ({ profilePic }) => {
     };
 
     dispatch(addPost(newPost)); // dispatching the data to redux store
+    toast.success("Posted Successfully!",{
+      autoClose: 1000
+    })
     setFile(null);
     setCaption("");
   };
