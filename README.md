@@ -10,7 +10,7 @@
 # Home Page
 ![image](https://github.com/user-attachments/assets/ce84cbed-87b8-4e33-9de9-ea17eb7d2ef4)
 
-# Profile Bar
+# Profile Page
 ![image](https://github.com/user-attachments/assets/172a235f-65d3-4ea0-9932-bb8e39c180da)
 
 # Post Functionality
