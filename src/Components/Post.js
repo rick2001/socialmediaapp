@@ -1,22 +1,36 @@
 import React, { useState } from 'react'
 import { MoreVert } from "@mui/icons-material"
 import "./Post.css"
-import { useSelector } from 'react-redux'
-import { Users } from '../dummyData'
-export const Post = ({ post }) => {
-    // const dummy = useSelector(state=>state.counter.Users)
-    // console.log("This is dummy users Data-> ", Users);
+import { useDispatch, useSelector } from 'react-redux'
+// import { Users } from '../dummyData'
+import { toast } from 'react-toastify'
+import { deletePost } from '../redux/counter/counterSlice'
+export const Post = ({ post, profilePic }) => {
+    const Users = useSelector(state=>state.counter.Users)
+    console.log("This is dummy users Data-> ", Users);
     
     const [like, setLike] = useState(post.like);
     const [isLiked, setIsLiked] = useState(false);
+    const [showOptions, setShowOptions] = useState(false);
+    const dispatch = useDispatch();
     const likeHandler = ()=>{
         setLike(isLiked ? like-1 : like+1);
         setIsLiked(!isLiked);
     }
 
+
+    const deleteHandler = (id)=>{
+        console.log("This is delete handler id", id);
+        dispatch(deletePost(id));
+        toast.warning("Deleted Successfully!",{
+            autoClose:1000
+        })
+        
+    }
+
     // console.log("***********debugging**********")
     // console.log("This is post from post.js",post);
-    // const checkData = dummy.filter((ele)=>ele.id===post.userId);
+    // const checkData = Users.filter((ele)=>ele.id===post.userId);
     // console.log("This is checkData from post.js",checkData);
 
 
@@ -30,14 +44,20 @@ export const Post = ({ post }) => {
                 <div className="postTop">
                     <div className="postTopLeft">
                         {/* <img className='postProfileImg' src={Users.filter((user) => user.id === post.userId)[0].profilePicture} alt="" /> */}
-                        <img className='postProfileImg' src={user?.profilePicture} alt="" />
+                        <img className='postProfileImg' src={user? user.profilePicture : profilePic} alt="" />
                         {/* {console.log("Post.js filter condition check",Users.filter((user) => user.id === post.userId)[0].profilePicture)} */}
                         {/* <span className="postUserName">{Users.filter((user) => user.id === post.userId)[0].username}</span> */}
-                        <span className="postUserName">{user?.username}</span>
+                        <span className="postUserName">{user ? user.username : "Monojit Palit"}</span>
                         <span className="postDate">{post.date}</span>
                     </div>
-                    <div className="postTopRight">
-                        <MoreVert />
+                    <div className="postTopRight" style={{ position: "relative" }}>
+                        {/* <MoreVert /> */}
+                        <MoreVert className="postOptionsIcon" onClick={() => setShowOptions(!showOptions)} />
+                        {showOptions && (
+                            <div className="postOptionsMenu">
+                                <button onClick={()=>deleteHandler(post.id)} className="deleteButton">Delete</button>
+                            </div>
+                        )}
                     </div>
                 </div>
                 <div className="postCenter">

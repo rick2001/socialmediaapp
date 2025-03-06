@@ -77,3 +77,39 @@
     border-bottom: 1px dashed gray;
     font-size: 15px;
 }
+
+
+.postOptionsIcon {
+    cursor: pointer;
+    font-size: 20px;
+    position: relative;
+}
+
+.postOptionsMenu {
+    position: absolute;
+    top: 30px;  /* Adjusted to appear right below the three dots */
+    right: 0;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+}
+
+.deleteButton {
+    background: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 4px;
+    width: 100%;
+    text-align: left;
+}
+
+.deleteButton:hover {
+    background: darkred;
+}

@@ -67,7 +67,7 @@ const initialState = {
     {
       id: 1,
       profilePicture: "assets/person/1.jpeg",
-      username: "Monojit Palit"
+      username: "Sukanya Das"
     },
     {
       id: 2,
@@ -222,12 +222,18 @@ export const counterSlice = createSlice({
     addPost:(state, action)=>{
       state.Posts.unshift(action.payload);
       localStorage.setItem("posts", JSON.stringify(state.Posts));
+    },
+
+    deletePost:(state, action)=>{
+      const deleteId = action.payload
+      state.Posts = state.Posts.filter((ele)=>ele.id!==deleteId);
+      localStorage.setItem("posts", JSON.stringify(state.Posts));
     }
 
 
   },
 })
 
-export const { signUpUser, resetUserPassword, addPost } = counterSlice.actions
+export const { signUpUser, resetUserPassword, addPost, deletePost } = counterSlice.actions
 
 export default counterSlice.reducer

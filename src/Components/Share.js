@@ -12,7 +12,7 @@ export const Share = ({ profilePic }) => {
   const [caption, setCaption] = useState(""); // State for storing post caption
   const dispatch = useDispatch();
   const user = useSelector((state) => state.counter.Users[0]); // Fetching user from Redux state
-  console.log("This is share.js", user);
+  // console.log("This is share.js", user);
   
 
   // Function to handle file selection and preview it
@@ -50,7 +50,8 @@ export const Share = ({ profilePic }) => {
       desc: caption,
       photo: file,
       date: formatDate(),
-      userId: user.id,
+      // userId: user.id,
+      userId: 100,
       like: 0,
       comment: 0,
       new:"yes"

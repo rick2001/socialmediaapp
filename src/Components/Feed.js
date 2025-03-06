@@ -14,10 +14,9 @@ export const Feed = ({profilePic}) => {
     <div className='feed'>
       <div className="feedWrapper">
         <Share profilePic={profilePic}/>
-        {Posts.map((post) => (
-          <Post key={post.id} post={post}/>
-        ))}
-
+        {Post.length > 0 ? Posts.map((post) => (
+          <Post key={post.id} post={post} profilePic={profilePic}/>
+        )) : <h1>No Post Present</h1>}
       </div>
     </div>
   )
